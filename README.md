@@ -1,9 +1,10 @@
 <h3>H-Codex HRMS</h3>
 
 <p>A Human Resource Management (HRM) System, build on a PHP MVC Framework structure from scratch.</p>
-<p> The system provide </p>
-
 ![alt text](https://github.com/moElhaj/hrms/blob/master/readme/payroll.PNG)
+<h3>Feature</h3>
+
+
 
 
 
