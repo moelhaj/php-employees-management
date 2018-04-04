@@ -1,0 +1,53 @@
+{% extends "layout/layout.html" %}
+{% block body %}
+
+<p class="lead"><strong>{{employee.first_name}}&nbsp;{{employee.last_name}} Profile</strong></p>
+<br>
+<br>
+
+<div class="row">
+	<div class="col-md-4">
+		<div id="profile" class="text-center">
+			<div class="middle">
+				{% if employee.gender == 'male' %}
+				<img src="{{ constant('URL') }}public/img/male.png" class="img-responsive" width="150" height="150" alt="Cinque Terre">
+				{% else %}
+				<img src="{{ constant('URL') }}public/img/female.png" class="img-responsive" width="150" height="150" class="img-fluid rounded">
+				{% endif %}
+			</div>
+		</div>
+		<br>
+		<div style="padding-left: 100px;">
+			<p>Name:&nbsp;{{employee.first_name}}&nbsp;{{employee.last_name}}</p>
+		</div>
+
+	</div>
+	<div class="col-md-4">
+		<p class="lead"><strong>Personal</strong></p>
+		<p>Birth Date:&nbsp;{{employee.birth_date}}</p>
+		<p>Nationality:&nbsp;{{employee.nationality}}</p>
+		<p>Gender:&nbsp;{{employee.gender}}</p>
+		<p>Marital Status:&nbsp;{{employee.marital_status}}</p>
+		<p>Age:&nbsp;{{employee.age}}</p>
+		<p class="lead"><strong>Organization</strong></p>
+		<p>Job Title:&nbsp;{{employee.job_title}}</p>
+			<p>Department:&nbsp;{{employee.department_name}}</p>
+			<p>Hire Date:&nbsp;{{employee.hire_date}}</p>
+			<p>Contract Type:&nbsp;{{employee.contract_type}}</p>
+	</div>
+
+	<div class="col-md-4">
+		<p class="lead"><strong>Contact</strong></p>
+		<p>Email:&nbsp;{{employee.email}}</p>
+		<p>Phone:&nbsp;{{employee.phone}}</p>
+		<p class="lead"><strong>Address</strong></p>
+		<p>{{employee.address}}</p>
+		<p>{{employee.city}}&nbsp;-&nbsp;{{employee.country}}</p>
+	</div>
+</div>
+
+
+<br>
+<br>
+<a href="{{ constant('URL') }}employees/manage?page={{page}}" class="btn btn-secondary float-right mb-2 btn-sm">Back</a>
+{% endblock %}

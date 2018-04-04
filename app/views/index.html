@@ -1,0 +1,204 @@
+{% extends "layout/layout.html" %}
+{% block body %}
+
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="display-4">Payroll</h3>        
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+        <canvas id="payroll" width="200" height="100"></canvas>
+	</div>
+	<div class="col-md-6">
+		<p><i class="fas fa-square" style="color: #4365C6;"></i> Total Gross Wages: {{grossWages}}</p>
+        <p><i class="fas fa-square" style="color: #47A5FC;"></i> Total Health Insurance: {{health}}</p>
+        <p><i class="fas fa-square" style="color: #169E94;"></i> Total Transport Allowance: {{transport}}</p>
+        <p><i class="fas fa-square" style="color: #8DC73D;"></i> Total Other Allowance: {{other_allowance}}</p>
+        <p><i class="fas fa-square" style="color: #F9A205;"></i> Total Deductions: {{deduction}}</p>
+        <p><i class="fas fa-square" style="color: #ED3751;"></i> Total Net Payables: {{net_payables}}</p>
+	</div>
+</div>
+
+<br>
+<hr>
+<br>
+
+<div class="row">
+	<div class="col-md-6">
+        <p class="lead">Total Employees: {{ count }}</p>
+        <canvas id="doughnut" width="200" height="100"></canvas>
+	</div>
+	<div class="col-md-6">
+        <p class="lead">Payroll by Departments</p>
+		<canvas id="bar" width="200" height="100"></canvas>
+	</div>
+</div>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+{% endblock %}
+
+{% block script %}
+
+<script type="text/javascript">
+          var data = {
+            labels:[{% for employeeSalary in employeesSalary %}
+                    "{{ employeeSalary.department_name }}",
+                    {% endfor %}],
+            datasets: [
+                {
+                    label: "Total Sales",
+                    backgroundColor: [
+                        'rgba(220,220,220, 0.2)',
+                        'rgba(220,220,220, 0.2)',
+                        'rgba(220,220,220, 0.2)',
+                        'rgba(220,220,220, 0.2)',
+                        'rgba(220,220,220, 0.2)',
+                        'rgba(220,220,220, 0.2)',
+                        'rgba(220,220,220, 0.2)',
+                        'rgba(220,220,220, 0.2)',
+                        'rgba(220,220,220, 0.2)',
+                        'rgba(220,220,220, 0.2)',
+                        'rgba(220,220,220, 0.2)',
+                        'rgba(220,220,220, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(101,101,101, 1)',
+                        'rgba(101,101,101, 1)',
+                        'rgba(101,101,101, 1)',
+                        'rgba(101,101,101, 1)',
+                        'rgba(101,101,101, 1)',
+                        'rgba(101,101,101, 1)',
+                        'rgba(101,101,101, 1)',
+                        'rgba(101,101,101, 1)',
+                        'rgba(101,101,101, 1)',
+                        'rgba(101,101,101, 1)',
+                        'rgba(101,101,101, 1)',
+                        'rgba(101,101,101, 1)',
+                        'rgba(101,101,101, 1)'
+                    ],
+                    borderWidth: 1, 				
+                    data: [{% for employeeSalary in employeesSalary %}
+                    {{ employeeSalary.net_payable }},
+                    {% endfor %}],
+                }
+            ]
+        };
+
+        var ctx = $("#bar");
+        var myLineChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: data,
+            options : {
+                legend: {
+                    display: false
+                },
+                scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }],
+        xAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+
+
+            }
+        });
+  </script>
+
+
+<script type="text/javascript">
+    var data = {
+            labels: [
+                "Male",
+                "Female",
+            ],
+            datasets: [
+                {
+                    data: [{{ male }},{{ female }},],
+                    backgroundColor: [
+                        "#2CABE3",
+                        "#f22951"
+                    ],
+                    hoverBackgroundColor: [
+                        "#77bfdd",
+                        "#ef5f7c"
+                    ]
+                }]
+        };
+
+        var ctx = $("#doughnut");
+        var myLineChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                cutoutPercentage: 70,
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            }
+        });
+  </script>
+
+
+  <script type="text/javascript">
+    var data = {
+            labels: [
+                "Gross Wages",
+                "Health Insurance",
+                "Transport",
+                "Other Allowance",
+                "Net Payables",
+                "Deduction"
+            ],
+            datasets: [
+                {
+                    data: [{{grossWages}},{{health}},{{transport}},{{other_allowance}},{{net_payables}},{{deduction}}],
+                    backgroundColor: [
+                        "#4365C6",
+                        "#47A5FC",
+                        "#169E94",
+                        "#8DC73D",
+                        "#F9A205",
+                        "#ED3751"
+                    ],
+                    hoverBackgroundColor: [
+                        "#6886d8",
+                        "#89c8ff",
+                        "#6ddbd2",
+                        "#bedb97",
+                        "#f2ca85",
+                        "#f27989"
+                    ]
+                }]
+        };
+
+        var ctx = $("#payroll");
+        var myLineChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                cutoutPercentage: 70,
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            }
+        });
+  </script>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "layout/layout.html" %}
+{% block body %}
+
+
+<p class="lead"><strong>Update Configuration</strong></p>
+
+ <form action="{{ constant('URL') }}config/update" method="POST">
+
+  <input type="hidden" name="employee_id" value="{{employee.employee_id}}">
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>House Rent is {{house_rent_percent}} from the basic salary</label>
+      <input type="text" class="form-control form-control-sm" name="house_rent" value="{{config['house_rent']}}" required>
+      <p></p>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label>Medical allowance</label>
+      <input type="text" class="form-control form-control-sm" name="medical_allowance" value="{{config['medical_allowance']}}" required>
+    </div>
+    
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Transport allowance is {{transport_allowance_percent}} from the basic salary</label>
+      <input type="text" class="form-control form-control-sm" name="transport_allowance" value="{{config['transport_allowance']}}" required>
+    </div>
+
+    <div class="form-group col-md-6">
+       <label>Other allowance is {{other_allowance_precent}} from the basic salary</label>
+      <input type="text" class="form-control form-control-sm" name="other_allowance" value="{{config['other_allowance']}}" required>
+    </div>
+    
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Holidays</label>
+      <input type="text" class="form-control form-control-sm" name="holidays" value="{{holidays}}" required>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label>life Insurance Deductions is {{life_insurance_deductions_precent}} from the basic salary</label>
+      <input type="text" class="form-control form-control-sm" name="life_insurance_deductions" value="{{config['life_insurance_deductions']}}" required>
+    </div>
+    
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <button type="submit" class="btn btn-primary btn-sm">Update</button>
+      <a href="{{ constant('URL') }}home" class="float-right btn btn-secondary mb-2 btn-sm">Back</a>
+    </div>
+  </div>
+  
+
+    
+</form>
+
+
+{% endblock %}

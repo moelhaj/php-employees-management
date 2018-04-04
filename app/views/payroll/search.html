@@ -1,0 +1,43 @@
+ {% extends "layout/layout.html" %}
+ {% block body %}
+
+<p class="lead"><strong>Search Result</strong></p>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Title</td>
+            <td>Basic</td>
+            <td>House Rent</td>
+            <td>Medical</td>
+            <td>Transport</td>
+            <td>Other Allowance</td>
+            <td>Gross Salary</td>
+            <td>Salary Slip</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for payroll in payrolls %}
+     <tr>
+        <td>{{payroll.first_name}}&nbsp;{{payroll.last_name}}</td>
+        <td>{{payroll.job_title}}</td>
+        <td>{{payroll.salary}}</td>
+        <td>{{payroll.house_rent}}</td>
+        <td>{{payroll.medical_allowance}}</td>
+        <td>{{payroll.transport_allowance}}</td>
+        <td>{{payroll.other_allowance}}</td>
+        <td>{{payroll.gross_salary}}</td>
+        <td><a href="{{ constant('URL') }}payroll/slip/{{payroll.employee_id}}?page={{page}}">Generate</a></td>
+
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+
+ <a href="{{ constant('URL') }}payroll?page={{page}}" class="btn btn-secondary mb-2 btn-sm">Back</a>
+
+
+
+ {% endblock %}

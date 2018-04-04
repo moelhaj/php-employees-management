@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H-Codex</title>
+    <link href="{{ constant('URL') }}public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ constant('URL') }}public/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="{{ constant('URL') }}public/css/main.css" rel="stylesheet">
+    <link rel='shortcut icon' href="{{ constant('URL') }}public/img/favicon.ico"/>
+</head>
+<body>
+  <div id="cover"></div>
+    <div id="notification" class="text-center">
+    <h1 class="display-4"> This Site works on wide screen only</h1>
+  </div>
+
+  <div id="header">
+    <div class="header">
+      <div class="logo">H-Codex</div>
+      <div id="menu-toggle"><i id="menu-icon" class="fa fa-angle-left" aria-hidden="true"></i></div>
+      <div class="ess float-right"><a href="{{constant('URL')}}config"><i class="fas fa-cog"></i></a></div>
+    </div>  
+  </div>
+
+  <div id="side">
+    <div class="menu">
+       <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="{{ constant('URL') }}home">
+                  <i class="fas fa-home fa-fw" aria-hidden="true"></i>
+                  Dashboard 
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#employees_menu">
+                  <i class="fas fa-users fa-fw" aria-hidden="true"></i>
+                  Employees
+                  <i class="float-right far fa-plus-square" style="padding-top:6px; color:#0097E1;" aria-hidden="true"></i>
+                </a>
+                <ul id="employees_menu" class="collapse sub_menu">
+                  <li><a href="{{ constant('URL') }}employees/new">New</a></li>
+                  <li><a href="{{ constant('URL') }}employees/manage">Manage</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ constant('URL') }}payroll">
+                  <i class="fas fa-file-alt fa-fw" aria-hidden="true"></i>
+                  Payroll
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ constant('URL') }}reports">
+                  <i class="fas fa-chart-line fa-fw" aria-hidden="true"></i>
+                  Reports
+                </a>
+              </li>
+            </ul>
+    </div>
+  </div>
+
+
+   <div id="wrapper">
+      <div class="container-fluid">
+
+        <main>
+          {% autoescape %}
+          {% block body %}
+          {% endblock %}
+          {% endautoescape %}
+        </main>
+      </div>
+    </div>
+
+<script src="{{ constant('URL') }}public/js/jquery.js"></script>
+<script src="{{ constant('URL') }}public/js/bootstrap.min.js"></script>
+<script src="{{ constant('URL') }}public/js/chart.min.js"></script>
+
+{% block script %}
+{% endblock %}
+
+<script type="text/javascript">
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#side").toggleClass("toggled");
+            $("#wrapper").toggleClass("toggled");
+
+
+            if ($("#side").hasClass("toggled")) {
+                  $("#menu-icon").removeClass("fa-angle-left");
+                  $("#menu-icon").addClass("fa-bars");
+                } else {
+                  $("#menu-icon").removeClass("fa-bars");
+                  $("#menu-icon").addClass("fa-angle-left");
+                }
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>H-Codex</title>
+    <link href="{{ constant('URL') }}public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ constant('URL') }}public/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="{{ constant('URL') }}public/css/main.css" rel="stylesheet">
+    <link rel='shortcut icon' href="{{ constant('URL') }}public/img/favicon.ico"/>
+</head>
+<body>
+	<div id="cover"></div>
+    <div id="notification" class="text-center">
+    <h1 class="display-4"> This Site works on wide screen only</h1>
+  </div>
+
+   <div id="wrapper">
+      <div class="container-fluid">
+
+        <main>
+          {% autoescape %}
+          {% block body %}
+          {% endblock %}
+          {% endautoescape %}
+        </main>
+      </div>
+    </div>
+
+<script src="{{ constant('URL') }}public/js/jquery.js"></script>
+<script src="{{ constant('URL') }}public/js/bootstrap.min.js"></script>
+
+{% block script %}
+{% endblock %}
+
+<script type="text/javascript">
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#side").toggleClass("toggled");
+            $("#wrapper").toggleClass("toggled");
+
+
+            if ($("#side").hasClass("toggled")) {
+                  $("#menu-icon").removeClass("fa-angle-left");
+                  $("#menu-icon").addClass("fa-bars");
+                } else {
+                  $("#menu-icon").removeClass("fa-bars");
+                  $("#menu-icon").addClass("fa-angle-left");
+                }
+        });
+
+    </script>
+</body>
+</html>

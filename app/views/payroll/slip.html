@@ -1,0 +1,117 @@
+{% extends "layout/layout.html" %}
+{% block body %}
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="float-right">
+			<button class="btn btn-primary mb-2 btn-sm" onclick="print('salary_slip')">Print</button>
+		</div>
+	</div>
+</div>
+
+
+
+<div id="salary_slip">
+
+<h3>Salary Slip</h3>
+
+<div class="row">
+	<div class="col-md-4">
+		<p><pre>ID:&nbsp;{{slip.employee_id}}</pre></p>
+		<p><pre>Name:&nbsp;{{slip.first_name}}&nbsp;{{slip.last_name}}</pre></p>
+	</div>
+	<div class="col-md-4">
+		<p><pre>Title:&nbsp;{{slip.job_title}}</pre></p>
+		<p><pre>Title:&nbsp;{{slip.department_name}}</pre></p>
+	</div>
+	<div class="col-md-4">
+		<p><pre>Date:&nbsp;{{date}}</pre></p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4"></div>
+	<div class="col-md-4"></div>
+</div>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td><pre>Description</pre></td>
+			<td><pre>Earning</pre></td>
+			<td><pre>Deductions</pre></td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><pre>Bacis Salary</pre></td>
+			<td><pre>{{slip.salary}}</pre></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><pre>House Rent</pre></td>
+			<td><pre>{{slip.house_rent}}</pre></pre></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><pre>Medical Allowance</pre></td>
+			<td><pre>{{slip.medical_allowance}}</pre></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><pre>Transportation Allowance</pre></td>
+			<td><pre>{{slip.transport_allowance}}</pre></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><pre>Other Allowance</pre></td>
+			<td><pre>{{slip.other_allowance}}</pre></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><pre>Life Insurance</pre></td>
+			<td></td>
+			<td><pre>{{slip.life_insurance_deductions}}</pre></td>
+		</tr>
+		<tr>
+			<td><pre>Total</td>
+			<td><strong><pre>{{slip.gross_salary}}</pre></strong></td>
+			<td><strong><pre>{{slip.life_insurance_deductions}}</pre></strong></td>
+		</tr>
+		<tr>
+			<td><pre>Net Pay</td>
+			<td colspan="2"><strong><pre>{{slip.net_payable}}</pre></strong></td>
+		</tr>
+	</tbody>
+</table>
+
+</div>
+
+
+<br>
+
+<a href="{{ constant('URL') }}payroll?page={{page}}" class="btn btn-secondary mb-2 btn-sm">Back</a>
+
+<br>
+
+
+
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+function print(div)
+{
+
+	var page = document.body.innerHTML;
+	var content = document.getElementById(div).innerHTML;
+	document.body.innerHTML = content;
+	window.print();
+	document.body.innerHTML = content;
+
+}
+
+</script>
+{% endblock %}

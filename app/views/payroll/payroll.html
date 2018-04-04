@@ -1,0 +1,94 @@
+{% extends "layout/layout.html" %}
+ {% block body %}
+
+<div class="row">
+    <div class="col-12 col-md-8">
+
+    <p class="lead"><strong>Payroll</strong></p>         
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-12 col-md-8">
+
+        <form class="form-inline" action="{{ constant('URL') }}payroll/filter" method="POST">
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <select class="form-control form-control-sm" name="departments" required onchange="this.form.submit()">
+                        <option value=""> Filter By Department </option>
+                        {% for department in departments %}
+                        <option value="{{department.department_id}}">{{department.department_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </form>         
+    </div>
+    <div class="col-6 col-md-4">
+        <form class="form-inline float-right" action="{{ constant('URL') }}payroll/search/?page={{page}}" method="POST">
+          <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control form-control-sm" name="employee_name" placeholder="Search Employee" required>
+          </div>
+          <button type="submit" class="btn btn-primary mb-2 btn-sm">Search</button>
+        </form>
+    </div>
+</div>
+
+<br>
+
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+
+            <td>Name</td>
+            <td>Title</td>
+            <td>Basic</td>
+            <td>House Rent</td>
+            <td>Medical</td>
+            <td>Transport</td>
+            <td>Other Allowance</td>
+            <td>Gross Salary</td>
+            <td>Salary Slip</td>
+        </tr>
+	</thead>
+	<tbody>
+		{% for payroll in payrolls %}
+	 <tr>
+        <td>{{payroll.first_name}}&nbsp;{{payroll.last_name}}</td>
+        <td>{{payroll.job_title}}</td>
+        <td>{{payroll.salary}}</td>
+        <td>{{payroll.house_rent}}</td>
+        <td>{{payroll.medical_allowance}}</td>
+        <td>{{payroll.transport_allowance}}</td>
+        <td>{{payroll.other_allowance}}</td>
+        <td>{{payroll.gross_salary}}</td>
+        <td><a href="{{ constant('URL') }}payroll/slip/{{payroll.employee_id}}?page={{page}}">Generate</a></td>
+
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+
+<nav aria-label="..." class="">
+    <ul class="pagination pagination-sm justify-content-center">
+    	{% for i in 1..pages %}
+    	<li class="page-item">
+    		{% if page == i %}
+    		<a href="?page={{i}}" class="page-link selected-link">{{i}}</a>
+    		{% else %}
+    		<a href="?page={{i}}" class="page-link">{{i}}</a>
+    		{% endif %}
+    	</li>
+    	{% endfor %}
+    </ul>
+</nav>
+
+
+<br>
+<br>
+<br>
+
+{% endblock %}

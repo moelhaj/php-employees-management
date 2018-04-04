@@ -1,0 +1,92 @@
+ {% extends "layout/layout.html" %}
+ {% block body %}
+
+ <p class="lead"><strong>Update Employee Personal Information</strong></p>
+
+ <form action="{{ constant('URL') }}employees/update" method="POST">
+
+  <input type="hidden" name="employee_id" value="{{employee.employee_id}}">
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label>First Name&nbsp;<span class="required">*</span></label>
+      <input type="text" class="form-control form-control-sm" name="first_name" value="{{employee.first_name}}" required>
+    </div>
+    <div class="form-group col-md-4">
+      <label>Middle Name</label>
+      <input type="text" class="form-control form-control-sm" name="middle_name" value="{{employee.middle_name}}">
+    </div>
+    <div class="form-group col-md-4">
+      <label>Last Name&nbsp;<span class="required">*</span></label>
+      <input type="text" class="form-control form-control-sm" name="last_name" value="{{employee.last_name}}" required>
+    </div>
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Email&nbsp;<span class="required">*</span></label>
+      <input type="email" class="form-control form-control-sm" name="email" value="{{employee.email}}" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Phone&nbsp;<span class="required">*</span></label>
+      <input type="text" class="form-control form-control-sm" name="phone" value="{{employee.phone}}" required>
+    </div>
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label>Marital Status&nbsp;<span class="required">*</span></label>
+       <input type="text" class="form-control form-control-sm" name="marital_status" value="{{employee.marital_status}}" required>
+    </div>
+    <div class="form-group col-md-2">
+      <label>Gender&nbsp;<span class="required">*</span></label>
+      <input type="text" class="form-control form-control-sm" name="gender" value="{{employee.gender}}" required>
+    </div>
+    <div class="form-group col-md-3">
+      <label>Birth Date&nbsp;<span class="required">*</span></label>
+      <input type="date" class="form-control form-control-sm" name="birth_date" value="{{employee.birth_date}}" required>
+    </div>
+    <div class="form-group col-md-4">
+      <label>Nationality&nbsp;<span class="required">*</span></label>
+      <input type="text" class="form-control form-control-sm" name="nationality" value="{{employee.nationality}}" required>
+    </div>
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label>Address&nbsp;<span class="required">*</span></label>
+      <input type="text" class="form-control form-control-sm" name="address" value="{{employee.address}}" required>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label>City&nbsp;<span class="required">*</span></label>
+      <input type="text" class="form-control form-control-sm" name="city" value="{{employee.city}}" required>
+    </div>
+    <div class="form-group col-md-4">
+      <label>State</label>
+      <input type="text" class="form-control form-control-sm" name="state" value="{{employee.state}}">
+    </div>
+    <div class="form-group col-md-4">
+      <label>Country&nbsp;<span class="required">*</span></label>
+      <input type="text" class="form-control form-control-sm" name="country" value="{{employee.country}}" required>
+    </div>
+  </div>
+
+  
+  <br>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <button type="submit" class="btn btn-primary btn-sm">Update</button>
+      <a href="{{ constant('URL') }}employees/manage?page={{page}}" class="float-right btn btn-secondary mb-2 btn-sm">Back</a>
+    </div>
+  </div>
+
+
+    
+</form>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+ {% extends "layout/layout.html" %}
+ {% block body %}
+
+<p class="lead"><strong>Search Result</strong></p>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Job</td>
+            <td>Address</td>
+            <td>City</td>
+            <td>Hire Date</td>
+            <td class="text-center">Action</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in employees %}
+     <tr>
+        <td>{{employee.id}}</td>
+        <td>{{employee.first_name}}&nbsp;{{employee.last_name}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.job_title}}</td>
+        <td>{{employee.address}}</td>
+        <td>{{employee.city}}</td>
+        <td>{{employee.start_date}}</td>
+        
+        <td class="text-center"><a href="{{ constant('URL') }}employees/profile/{{employee.id}}?page={{page}}">Show</a>&nbsp;        
+        <a href="{{ constant('URL') }}employees/edit/{{employee.id}}?page={{page}}">Edit</a></td>
+
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+
+ <a href="{{ constant('URL') }}employees/manage?page={{page}}" class="btn btn-secondary mb-2 btn-sm">Back</a>
+
+
+
+ {% endblock %}

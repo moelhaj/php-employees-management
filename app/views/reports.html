@@ -1,0 +1,79 @@
+{% extends "layout/layout.html" %}
+{% block body %}
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="float-right">
+			<button class="btn btn-primary mb-2 btn-sm" onclick="print('salary_slip')">Print</button>
+		</div>
+	</div>
+</div>
+
+
+
+<div id="salary_slip">
+
+<h3>Employees</h3>
+
+<div class="row">
+	<div class="col-md-4">
+		<p><pre>Company Name: *******</pre></p>
+		<p><pre>Company Location: ********</pre></p>
+	</div>
+	<div class="col-md-4">
+		<p><pre>Total Numbers of Departments: {{departments}}</pre></p>
+		<p><pre>Total Numbers of Employees: {{employees}}</pre></p>
+	</div>
+	<div class="col-md-4">
+		<p><pre>Date:&nbsp;{{date}}</pre></p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<p><pre><strong>Numbers of Employees per departments</strong></pre></p>
+		{% for value in dept_emp %}
+		<p><pre>{{value.department_name}}:&nbsp;{{value.employees}}</pre></p>
+		{% endfor %}
+	</div>
+</div>
+
+<h3>Payroll</h3>
+
+<div class="row">
+	<div class="col-md-12">
+		<p><pre>Total Gross Wages: {{grossWages}}</pre></p>
+        <p><pre>Total Health Insurance: {{health}}</pre></p>
+        <p><pre>Total Transport Allowance: {{transport}}</pre></p>
+        <p><pre>Total Other Allowance: {{other_allowance}}</pre></p>
+        <p><pre>Total Deductions: {{deduction}}</pre></p>
+        <p><pre>Total Net Payables: {{net_payables}}</pre></p>
+	</div>
+</div>
+
+</div>
+
+
+<br>
+<br>
+
+
+
+{% endblock %}
+
+
+{% block script %}
+<script type="text/javascript">
+function print(div)
+{
+
+	var page = document.body.innerHTML;
+	var content = document.getElementById(div).innerHTML;
+	document.body.innerHTML = content;
+	window.print();
+	document.body.innerHTML = content;
+
+}
+
+</script>
+{% endblock %}
