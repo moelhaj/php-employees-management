@@ -2,7 +2,9 @@
 
 <h3>Sales Analysis system</h3>
 <p>A simple Sales Analysis system that contain a dashboard for sales metrics, a data entry point, and DataTables to modify data.</p>
-
+![alt text](https://github.com/moElhaj/hrms/blob/master/readme/payroll_department.PNG)
+![alt text](https://github.com/moElhaj/hrms/blob/master/readme/payroll.PNG)
+![alt text](https://github.com/moElhaj/hrms/blob/master/readme/slip.PNG)
 ![alt text](https://github.com/moElhaj/hrms/blob/master/readme/employees.PNG)
 
 <strong>Technologies used</strong>
