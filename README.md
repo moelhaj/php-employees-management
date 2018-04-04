@@ -1,9 +1,7 @@
-# hrms
+<h3>H-Codex HRMS</h3>
 
-<h3>Sales Analysis system</h3>
-
-
-<p>A simple Sales Analysis system that contain a dashboard for sales metrics, a data entry point, and DataTables to modify data.</p>
+<p>A Human Resource Management (HRM) System, build on a PHP MVC Framework structure from scratch.</p>
+<p> The system provide </p>
 
 ![alt text](https://github.com/moElhaj/hrms/blob/master/readme/payroll.PNG)
 
