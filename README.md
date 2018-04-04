@@ -4,7 +4,10 @@
 
 
 <p>A simple Sales Analysis system that contain a dashboard for sales metrics, a data entry point, and DataTables to modify data.</p>
+
 ![alt text](https://github.com/moElhaj/hrms/blob/master/readme/payroll.PNG)
+
+
 
 <strong>Technologies used</strong>
 <ul>
