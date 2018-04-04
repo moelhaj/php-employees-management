@@ -12,6 +12,10 @@
 <li>Add and Edit Employees information</li>
 <li>Salary Calculation</li>
 <li>Slip generation</li>
+</ul>
+
+<br>
+<br>
 
 ![alt text](https://github.com/moElhaj/hrms/blob/master/readme/employees.PNG)
 
