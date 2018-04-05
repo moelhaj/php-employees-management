@@ -3,7 +3,7 @@
 <a href="https://f-codex.herokuapp.com" target="_blank">Demo</a> 
 
 
-<p>A Human Resource Management (HRM) System, build on a PHP MVC Framework structure from scratch.</p>
+<p>A Human Resource Management (HRM) System, build on a PHP MVC Framework structure.</p>
 
 ![alt text](https://github.com/moElhaj/hrms/blob/master/readme/payroll.PNG)
 
