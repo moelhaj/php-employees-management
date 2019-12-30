@@ -1,7 +1,5 @@
 <h3>H-Codex HRMS</h3>
 
-<a href="https://codyx.000webhostapp.com" target="_blank">Demo</a> 
-
 
 <p>A Human Resource Management (HRM) System, build on a PHP MVC Framework structure.</p>
 
